@@ -9,6 +9,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/nextjs";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,19 +55,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider
-        appearance={{
-          elements: {
-            formButtonPrimary: "primary-gradient",
-            footerActionLink: "primary-text-gradient hover:text-primary-500",
-          },
-        }}
-      >
-        <body className={`${inter.variable} ${spaceGroteskFont.variable}`}>
-          <Header />
-          {children}
-        </body>
-      </ClerkProvider>
+      <body className={`${inter.variable} ${spaceGroteskFont.variable}`}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: "primary-gradient",
+              footerActionLink: "primary-text-gradient hover:text-primary-500",
+            },
+          }}
+        >
+          <ThemeProvider>
+            <Header />
+            {children}
+          </ThemeProvider>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
