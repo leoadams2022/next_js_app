@@ -7,73 +7,68 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
+    extend: {
+      colors: {
+        primary: {
+          500: "#FF7000",
+          100: "#FFF1E6",
+        },
+        dark: {
+          100: "#000000",
+          200: "#0F1117",
+          300: "#151821",
+          400: "#212734",
+          500: "#101012",
+          gradient:
+            "linear-gradient(232deg,rgba(23, 28, 35, 0.41) 0%,rgba(19, 22, 28, 0.7) 100%)",
+        },
+        light: {
+          900: "#FFFFFF",
+          800: "#F4F6F8",
+          850: "#FDFDFD",
+          700: "#DCE3F1",
+          500: "#7B8EC8",
+          400: "#858EAD",
+        },
+        "accent-blue": "#1DA1F2",
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        spaceGrotesk: ["var(--font-spaceGrotesk)"],
+      },
+      boxShadow: {
+        "light-100":
+          "0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px",
+        "light-200": "10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
+        "light-300": "-10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
+        "dark-100": "0px 2px 10px 0px rgba(46, 52, 56, 0.10)",
+        "dark-200": "2px 0px 20px 0px rgba(39, 36, 36, 0.04)",
+      },
+      backgroundImage: {
+        "auth-dark": "url('/assets/images/auth-dark.png')",
+        "auth-light": "url('/assets/images/auth-light.png')",
+      },
       screens: {
-        "2xl": "1400px",
+        xs: "420px",
       },
-    },
-  },
-  extend: {
-    colors: {
-      primary: {
-        500: "#FF7000",
-        100: "#FFF1E6",
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
-      dark: {
-        100: "#000000",
-        200: "#0F1117",
-        300: "#151821",
-        400: "#212734",
-        500: "#101012",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
-      light: {
-        900: "#FFFFFF",
-        800: "#F4F6F8",
-        850: "#FDFDFD",
-        700: "#DCE3F1",
-        500: "#7B8EC8",
-        400: "#858EAD",
-      },
-      "accent-blue": "#1DA1F2",
-    },
-    fontFamily: {
-      inter: ["var(--font-inter)"],
-      spaceGrotesk: ["var(--font-spaceGrotesk)"],
-    },
-    boxShadow: {
-      "light-100":
-        "0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px",
-      "light-200": "10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
-      "light-300": "-10px 10px 20px 0px rgba(218, 213, 213, 0.10)",
-      "dark-100": "0px 2px 10px 0px rgba(46, 52, 56, 0.10)",
-      "dark-200": "2px 0px 20px 0px rgba(39, 36, 36, 0.04)",
-    },
-    backgroundImage: {
-      "auth-dark": "url('/assets/images/auth-dark.png')",
-      "auth-light": "url('/assets/images/auth-light.png')",
-    },
-    screens: {
-      xs: "420px",
-    },
-    keyframes: {
-      "accordion-down": {
-        from: { height: 0 },
-        to: { height: "var(--radix-accordion-content-height)" },
-      },
-      "accordion-up": {
-        from: { height: "var(--radix-accordion-content-height)" },
-        to: { height: 0 },
-      },
-    },
-    animation: {
-      "accordion-down": "accordion-down 0.2s ease-out",
-      "accordion-up": "accordion-up 0.2s ease-out",
     },
   },
 
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-  darkMode: "class",
+  darkMode: ["class"],
 };
 export default config;
